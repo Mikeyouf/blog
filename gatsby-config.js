@@ -1,11 +1,39 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
+    title: `Mé s'aventure, le blog`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    author: `Mik@el Antoine`,
+    bio: `Voyez ce jeu exquis wallon, de graphie en kit mais bref. 
+    Portez ce vieux whisky au juge blond qui fume sur son île 
+    intérieure, à côté de l'alcôve ovoïde, où les bûches se 
+    consument dans l'âtre. jugez des prix ! Voyez le brick 
+    géant que j'examine près du wharf. Portez ce vieux whisky 
+    au juge blond qui fume. Bâchez la queue du.`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    'gatsby-plugin-netlify-cms',
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `blog`,
+        path: `${__dirname}/blog/`,
+      },
+    },
+    'gatsby-transformer-remark',
+    {
+      resolve: 'gatsby-plugin-less',
+      options: {
+        modifyVars: require("./src/theme/antd.js"),
+        javascriptEnabled: true,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-antd',
+      options: {
+        style: true,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
